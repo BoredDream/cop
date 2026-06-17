@@ -1,0 +1,121 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\ZJ\Desktop\Practice\PipeLine\simulation\qsim
+vpipelinedcpu
+Z1 IPo@YZfWl`J4;izg_P^l=F1
+Z2 V`hGTlHbCai6m6RCC;g[_O1
+Z3 dC:\Users\ZJ\Desktop\Practice\PipeLine\simulation\qsim
+Z4 w1720926348
+Z5 8PL.vo
+Z6 FPL.vo
+L0 32
+Z7 OV;L;10.1e;51
+r1
+31
+Z8 !s90 -work|work|PL.vo|
+Z9 o-work work -O0
+!i10b 1
+Z10 !s100 1?31jD=djk@6C32VPIfSM3
+!s85 0
+Z11 !s108 1720926349.135000
+Z12 !s107 PL.vo|
+!s101 -O0
+vpipelinedcpu_vlg_check_tst
+!i10b 1
+Z13 !s100 <nRLEO?goVI5YE>b0a;4`1
+Z14 Im@Fjf=]ImFMic7_bZ8A910
+Z15 VP;@[B3?azKZBa5`]Zei2X2
+R3
+Z16 w1720926346
+Z17 8Waveform.vwf.vt
+Z18 FWaveform.vwf.vt
+L0 60
+R7
+r1
+!s85 0
+31
+Z19 !s108 1720926349.561000
+Z20 !s107 Waveform.vwf.vt|
+Z21 !s90 -work|work|Waveform.vwf.vt|
+!s101 -O0
+R9
+vpipelinedcpu_vlg_sample_tst
+!i10b 1
+Z22 !s100 ;@a4SLi@XW:WDN@QLnTLj1
+Z23 IW?H0X27M21YR`YQoOdO341
+Z24 VGf;=e3_;Jb3fRZ1[5mXKB0
+R3
+R16
+R17
+R18
+L0 30
+R7
+r1
+!s85 0
+31
+R19
+R20
+R21
+!s101 -O0
+R9
+vpipelinedcpu_vlg_vec_tst
+!i10b 1
+Z25 !s100 [n853XDDbfojh>OL@0H?53
+Z26 IOmK1L8[TP6dV4L4zgS95U2
+Z27 VBmhlUSG9[TfjN6Tdn`M:?0
+R3
+R16
+R17
+R18
+Z28 L0 3048
+R7
+r1
+!s85 0
+31
+R19
+R20
+R21
+!s101 -O0
+R9
+vPL
+Z29 I><hc04[SIU:G;>c4EaUN]2
+Z30 VdA`bObmCZe?@AV_DLVKT[2
+R3
+Z31 w1720840677
+R5
+R6
+L0 32
+R7
+r1
+31
+R8
+R9
+n@p@l
+Z32 !s100 PjGH@]hI5K@]jX05^h0eR0
+Z33 !s108 1720840681.460000
+R12
+!i10b 1
+!s85 0
+!s101 -O0
+vPL_vlg_vec_tst
+Z34 IbzK?M[;eRAO]15]FU4OnA3
+Z35 VJ^`m<D;hFFem7R^W@F8[C0
+R3
+Z36 w1720840675
+R17
+R18
+L0 30
+R7
+r1
+31
+R21
+R9
+Z37 n@p@l_vlg_vec_tst
+Z38 !s100 =[kWf98<HfS2=@H3WLGaB0
+Z39 !s108 1720840681.880000
+Z40 !s107 Waveform.vwf.vt|
+!i10b 1
+!s85 0
+!s101 -O0

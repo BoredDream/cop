@@ -1,0 +1,1090 @@
+Analysis & Synthesis report for PL
+Sun Jul 14 11:04:25 2024
+Quartus II 64-Bit Version 14.0.0 Build 200 06/17/2014 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Registers Added for RAM Pass-Through Logic
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Source assignments for pipemem:mem_stage|pl_data_mem:dmem|altsyncram:ram_rtl_0|altsyncram_3um1:auto_generated
+ 15. Parameter Settings for Inferred Entity Instance: pipemem:mem_stage|pl_data_mem:dmem|altsyncram:ram_rtl_0
+ 16. altsyncram Parameter Settings by Entity Instance
+ 17. Port Connectivity Checks: "pipeexe:exe_stage|alu:al_unit"
+ 18. Port Connectivity Checks: "pipeexe:exe_stage|cla32:ret_addr"
+ 19. Port Connectivity Checks: "pipeid:id_stage|cla32:b_adr"
+ 20. Port Connectivity Checks: "pipeif:if_stage|cla32:pc_plus4|cla_32:cla"
+ 21. Port Connectivity Checks: "pipeif:if_stage|cla32:pc_plus4"
+ 22. Post-Synthesis Netlist Statistics for Top Partition
+ 23. Elapsed Time Per Partition
+ 24. Analysis & Synthesis Messages
+ 25. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2014 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus II License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Sun Jul 14 11:04:25 2024       ;
+; Quartus II 64-Bit Version       ; 14.0.0 Build 200 06/17/2014 SJ Full Version ;
+; Revision Name                   ; PL                                          ;
+; Top-level Entity Name           ; pipelinedcpu                                ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 1463                                        ;
+; Total pins                      ; 162                                         ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 1,024                                       ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; pipelinedcpu       ; PL                 ;
+; Family name                                                                     ; Cyclone V          ; Cyclone IV GX      ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation      ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                       ; Off                ; Off                ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; PowerPlay Power Optimization                                                    ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Synthesis Seed                                                                  ; 1                  ; 1                  ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 16          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 16          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-16        ; < 0.1%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                    ;
++----------------------------------------+-----------------+-------------------------------------------------------+------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path       ; Used in Netlist ; File Type                                             ; File Name with Absolute Path                                                 ; Library ;
++----------------------------------------+-----------------+-------------------------------------------------------+------------------------------------------------------------------------------+---------+
+; code/add.v                             ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/add.v                             ;         ;
+; code/cla_2.v                           ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/cla_2.v                           ;         ;
+; code/cla_4.v                           ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/cla_4.v                           ;         ;
+; code/cla_8.v                           ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/cla_8.v                           ;         ;
+; code/gp.v                              ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/gp.v                              ;         ;
+; code/cla_16.v                          ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/cla_16.v                          ;         ;
+; code/shift.v                           ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/shift.v                           ;         ;
+; code/cla_32.v                          ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/cla_32.v                          ;         ;
+; code/addsub32.v                        ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/addsub32.v                        ;         ;
+; code/regfile.v                         ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/regfile.v                         ;         ;
+; code/pl_inst_mem.v                     ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/pl_inst_mem.v                     ;         ;
+; code/pl_data_mem.v                     ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/pl_data_mem.v                     ;         ;
+; code/pipewb.v                          ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/pipewb.v                          ;         ;
+; code/pipepc.v                          ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/pipepc.v                          ;         ;
+; code/pipemwreg.v                       ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/pipemwreg.v                       ;         ;
+; code/pipemem.v                         ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/pipemem.v                         ;         ;
+; code/pipelinedcpu.v                    ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/pipelinedcpu.v                    ;         ;
+; code/pipeir.v                          ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/pipeir.v                          ;         ;
+; code/pipeif.v                          ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/pipeif.v                          ;         ;
+; code/pipeidcu.v                        ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/pipeidcu.v                        ;         ;
+; code/pipeid.v                          ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/pipeid.v                          ;         ;
+; code/pipeexe.v                         ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/pipeexe.v                         ;         ;
+; code/pipeemreg.v                       ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/pipeemreg.v                       ;         ;
+; code/pipedereg.v                       ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/pipedereg.v                       ;         ;
+; code/mux4x32.v                         ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/mux4x32.v                         ;         ;
+; code/mux2x32.v                         ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/mux2x32.v                         ;         ;
+; code/mux2x5.v                          ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/mux2x5.v                          ;         ;
+; code/dffe32.v                          ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/dffe32.v                          ;         ;
+; code/cla32.v                           ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/cla32.v                           ;         ;
+; code/alu.v                             ; yes             ; User Verilog HDL File                                 ; C:/Users/ZJ/Desktop/Practice/PipeLine/code/alu.v                             ;         ;
+; altsyncram.tdf                         ; yes             ; Megafunction                                          ; d:/altera/14.0/quartus/libraries/megafunctions/altsyncram.tdf                ;         ;
+; stratix_ram_block.inc                  ; yes             ; Megafunction                                          ; d:/altera/14.0/quartus/libraries/megafunctions/stratix_ram_block.inc         ;         ;
+; lpm_mux.inc                            ; yes             ; Megafunction                                          ; d:/altera/14.0/quartus/libraries/megafunctions/lpm_mux.inc                   ;         ;
+; lpm_decode.inc                         ; yes             ; Megafunction                                          ; d:/altera/14.0/quartus/libraries/megafunctions/lpm_decode.inc                ;         ;
+; aglobal140.inc                         ; yes             ; Megafunction                                          ; d:/altera/14.0/quartus/libraries/megafunctions/aglobal140.inc                ;         ;
+; a_rdenreg.inc                          ; yes             ; Megafunction                                          ; d:/altera/14.0/quartus/libraries/megafunctions/a_rdenreg.inc                 ;         ;
+; altrom.inc                             ; yes             ; Megafunction                                          ; d:/altera/14.0/quartus/libraries/megafunctions/altrom.inc                    ;         ;
+; altram.inc                             ; yes             ; Megafunction                                          ; d:/altera/14.0/quartus/libraries/megafunctions/altram.inc                    ;         ;
+; altdpram.inc                           ; yes             ; Megafunction                                          ; d:/altera/14.0/quartus/libraries/megafunctions/altdpram.inc                  ;         ;
+; db/altsyncram_3um1.tdf                 ; yes             ; Auto-Generated Megafunction                           ; C:/Users/ZJ/Desktop/Practice/PipeLine/db/altsyncram_3um1.tdf                 ;         ;
+; db/pl.ram0_pl_data_mem_226109e.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/ZJ/Desktop/Practice/PipeLine/db/pl.ram0_pl_data_mem_226109e.hdl.mif ;         ;
++----------------------------------------+-----------------+-------------------------------------------------------+------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimate of Logic utilization (ALMs needed) ; 1311      ;
+;                                             ;           ;
+; Combinational ALUT usage for logic          ; 1514      ;
+;     -- 7 input functions                    ; 30        ;
+;     -- 6 input functions                    ; 894       ;
+;     -- 5 input functions                    ; 180       ;
+;     -- 4 input functions                    ; 127       ;
+;     -- <=3 input functions                  ; 283       ;
+;                                             ;           ;
+; Dedicated logic registers                   ; 1463      ;
+;                                             ;           ;
+; I/O pins                                    ; 162       ;
+; Total MLAB memory bits                      ; 0         ;
+; Total block memory bits                     ; 1024      ;
+; Total DSP Blocks                            ; 0         ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 1495      ;
+; Total fan-out                               ; 13855     ;
+; Average fan-out                             ; 4.16      ;
++---------------------------------------------+-----------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                 ;
++----------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                   ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                         ; Library Name ;
++----------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------+--------------+
+; |pipelinedcpu                                ; 1514 (80)         ; 1463 (0)     ; 1024              ; 0          ; 162  ; 0            ; |pipelinedcpu                                                                                                               ; work         ;
+;    |pipedereg:de_reg|                        ; 0 (0)             ; 127 (127)    ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipedereg:de_reg                                                                                              ; work         ;
+;    |pipeemreg:em_reg|                        ; 0 (0)             ; 72 (72)      ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeemreg:em_reg                                                                                              ; work         ;
+;    |pipeexe:exe_stage|                       ; 482 (5)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage                                                                                             ; work         ;
+;       |alu:al_unit|                          ; 147 (7)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit                                                                                 ; work         ;
+;          |addsub32:as32|                     ; 97 (12)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32                                                                   ; work         ;
+;             |cla32:as32|                     ; 85 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32                                                        ; work         ;
+;                |cla_32:cla|                  ; 85 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla                                             ; work         ;
+;                   |cla_16:a0|                ; 34 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0                                   ; work         ;
+;                      |cla_8:a0|              ; 15 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a0                          ; work         ;
+;                         |cla_4:a0|           ; 6 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a0                 ; work         ;
+;                            |cla_2:a0|        ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a0|cla_2:a0        ; work         ;
+;                               |add:a1|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a0|cla_2:a0|add:a1 ; work         ;
+;                               |gp:gp0|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a0|cla_2:a0|gp:gp0 ; work         ;
+;                            |cla_2:a1|        ; 1 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a0|cla_2:a1        ; work         ;
+;                               |gp:gp0|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a0|cla_2:a1|gp:gp0 ; work         ;
+;                            |gp:gp0|          ; 3 (3)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a0|gp:gp0          ; work         ;
+;                         |cla_4:a1|           ; 6 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1                 ; work         ;
+;                            |cla_2:a0|        ; 3 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1|cla_2:a0        ; work         ;
+;                               |add:a0|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1|cla_2:a0|add:a0 ; work         ;
+;                               |gp:gp0|       ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1|cla_2:a0|gp:gp0 ; work         ;
+;                            |cla_2:a1|        ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1|cla_2:a1        ; work         ;
+;                               |add:a0|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1|cla_2:a1|add:a0 ; work         ;
+;                               |gp:gp0|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1|cla_2:a1|gp:gp0 ; work         ;
+;                            |gp:gp0|          ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1|gp:gp0          ; work         ;
+;                         |gp:gp0|             ; 3 (3)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a0|gp:gp0                   ; work         ;
+;                      |cla_8:a1|              ; 17 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a1                          ; work         ;
+;                         |cla_4:a0|           ; 9 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a0                 ; work         ;
+;                            |cla_2:a0|        ; 4 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a0|cla_2:a0        ; work         ;
+;                               |add:a0|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a0|cla_2:a0|add:a0 ; work         ;
+;                               |gp:gp0|       ; 3 (3)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a0|cla_2:a0|gp:gp0 ; work         ;
+;                            |cla_2:a1|        ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a0|cla_2:a1        ; work         ;
+;                               |add:a1|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a0|cla_2:a1|add:a1 ; work         ;
+;                               |gp:gp0|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a0|cla_2:a1|gp:gp0 ; work         ;
+;                            |gp:gp0|          ; 3 (3)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a0|gp:gp0          ; work         ;
+;                         |cla_4:a1|           ; 6 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a1                 ; work         ;
+;                            |cla_2:a0|        ; 3 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a1|cla_2:a0        ; work         ;
+;                               |add:a0|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a1|cla_2:a0|add:a0 ; work         ;
+;                               |gp:gp0|       ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a1|cla_2:a0|gp:gp0 ; work         ;
+;                            |cla_2:a1|        ; 3 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a1|cla_2:a1        ; work         ;
+;                               |add:a1|       ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a1|cla_2:a1|add:a1 ; work         ;
+;                               |gp:gp0|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a1|cla_2:a1|gp:gp0 ; work         ;
+;                         |gp:gp0|             ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|cla_8:a1|gp:gp0                   ; work         ;
+;                      |gp:gp0|                ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a0|gp:gp0                            ; work         ;
+;                   |cla_16:a1|                ; 49 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1                                   ; work         ;
+;                      |cla_8:a0|              ; 26 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a0                          ; work         ;
+;                         |cla_4:a0|           ; 15 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0                 ; work         ;
+;                            |cla_2:a0|        ; 6 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|cla_2:a0        ; work         ;
+;                               |add:a0|       ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|cla_2:a0|add:a0 ; work         ;
+;                               |add:a1|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|cla_2:a0|add:a1 ; work         ;
+;                               |gp:gp0|       ; 3 (3)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|cla_2:a0|gp:gp0 ; work         ;
+;                            |cla_2:a1|        ; 6 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|cla_2:a1        ; work         ;
+;                               |add:a0|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|cla_2:a1|add:a0 ; work         ;
+;                               |add:a1|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|cla_2:a1|add:a1 ; work         ;
+;                               |gp:gp0|       ; 4 (4)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|cla_2:a1|gp:gp0 ; work         ;
+;                            |gp:gp0|          ; 3 (3)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|gp:gp0          ; work         ;
+;                         |cla_4:a1|           ; 9 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1                 ; work         ;
+;                            |cla_2:a0|        ; 4 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1|cla_2:a0        ; work         ;
+;                               |add:a1|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1|cla_2:a0|add:a1 ; work         ;
+;                               |gp:gp0|       ; 3 (3)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1|cla_2:a0|gp:gp0 ; work         ;
+;                            |cla_2:a1|        ; 4 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1|cla_2:a1        ; work         ;
+;                               |add:a1|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1|cla_2:a1|add:a1 ; work         ;
+;                               |gp:gp0|       ; 3 (3)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1|cla_2:a1|gp:gp0 ; work         ;
+;                            |gp:gp0|          ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1|gp:gp0          ; work         ;
+;                         |gp:gp0|             ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a0|gp:gp0                   ; work         ;
+;                      |cla_8:a1|              ; 20 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a1                          ; work         ;
+;                         |cla_4:a0|           ; 9 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0                 ; work         ;
+;                            |cla_2:a0|        ; 5 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|cla_2:a0        ; work         ;
+;                               |add:a0|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|cla_2:a0|add:a0 ; work         ;
+;                               |add:a1|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|cla_2:a0|add:a1 ; work         ;
+;                               |gp:gp0|       ; 3 (3)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|cla_2:a0|gp:gp0 ; work         ;
+;                            |cla_2:a1|        ; 3 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|cla_2:a1        ; work         ;
+;                               |add:a0|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|cla_2:a1|add:a0 ; work         ;
+;                               |add:a1|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|cla_2:a1|add:a1 ; work         ;
+;                               |gp:gp0|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|cla_2:a1|gp:gp0 ; work         ;
+;                            |gp:gp0|          ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|gp:gp0          ; work         ;
+;                         |cla_4:a1|           ; 9 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1                 ; work         ;
+;                            |cla_2:a0|        ; 6 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1|cla_2:a0        ; work         ;
+;                               |add:a0|       ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1|cla_2:a0|add:a0 ; work         ;
+;                               |add:a1|       ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1|cla_2:a0|add:a1 ; work         ;
+;                               |gp:gp0|       ; 3 (3)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1|cla_2:a0|gp:gp0 ; work         ;
+;                            |cla_2:a1|        ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1|cla_2:a1        ; work         ;
+;                               |add:a1|       ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1|cla_2:a1|add:a1 ; work         ;
+;                            |gp:gp0|          ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1|gp:gp0          ; work         ;
+;                         |gp:gp0|             ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|cla_8:a1|gp:gp0                   ; work         ;
+;                      |gp:gp0|                ; 3 (3)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|cla_16:a1|gp:gp0                            ; work         ;
+;                   |gp:gp0|                   ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|addsub32:as32|cla32:as32|cla_32:cla|gp:gp0                                      ; work         ;
+;          |mux4x32:res|                       ; 6 (6)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|mux4x32:res                                                                     ; work         ;
+;          |shift:shifter|                     ; 37 (37)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|alu:al_unit|shift:shifter                                                                   ; work         ;
+;       |cla32:ret_addr|                       ; 15 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr                                                                              ; work         ;
+;          |cla_32:cla|                        ; 15 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla                                                                   ; work         ;
+;             |cla_16:a0|                      ; 6 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a0                                                         ; work         ;
+;                |cla_8:a0|                    ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a0|cla_8:a0                                                ; work         ;
+;                   |cla_4:a1|                 ; 1 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1                                       ; work         ;
+;                      |cla_2:a1|              ; 1 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1|cla_2:a1                              ; work         ;
+;                         |add:a0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1|cla_2:a1|add:a0                       ; work         ;
+;                   |gp:gp0|                   ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a0|cla_8:a0|gp:gp0                                         ; work         ;
+;                |cla_8:a1|                    ; 1 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a0|cla_8:a1                                                ; work         ;
+;                   |gp:gp0|                   ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a0|cla_8:a1|gp:gp0                                         ; work         ;
+;                |gp:gp0|                      ; 3 (3)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a0|gp:gp0                                                  ; work         ;
+;             |cla_16:a1|                      ; 9 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a1                                                         ; work         ;
+;                |cla_8:a0|                    ; 3 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a1|cla_8:a0                                                ; work         ;
+;                   |cla_4:a0|                 ; 1 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0                                       ; work         ;
+;                      |gp:gp0|                ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|gp:gp0                                ; work         ;
+;                   |cla_4:a1|                 ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1                                       ; work         ;
+;                      |cla_2:a0|              ; 1 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1|cla_2:a0                              ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1|cla_2:a0|add:a1                       ; work         ;
+;                      |gp:gp0|                ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1|gp:gp0                                ; work         ;
+;                |cla_8:a1|                    ; 5 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a1|cla_8:a1                                                ; work         ;
+;                   |cla_4:a0|                 ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0                                       ; work         ;
+;                      |cla_2:a0|              ; 1 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|cla_2:a0                              ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|cla_2:a0|add:a1                       ; work         ;
+;                      |gp:gp0|                ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|gp:gp0                                ; work         ;
+;                   |cla_4:a1|                 ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1                                       ; work         ;
+;                      |cla_2:a1|              ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1|cla_2:a1                              ; work         ;
+;                         |add:a0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1|cla_2:a1|add:a0                       ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1|cla_2:a1|add:a1                       ; work         ;
+;                   |gp:gp0|                   ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a1|cla_8:a1|gp:gp0                                         ; work         ;
+;                |gp:gp0|                      ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|cla32:ret_addr|cla_32:cla|cla_16:a1|gp:gp0                                                  ; work         ;
+;       |mux2x32:alu_in_a|                     ; 31 (31)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|mux2x32:alu_in_a                                                                            ; work         ;
+;       |mux2x32:alu_in_b|                     ; 34 (34)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|mux2x32:alu_in_b                                                                            ; work         ;
+;       |mux2x32:save_pc8|                     ; 250 (250)         ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeexe:exe_stage|mux2x32:save_pc8                                                                            ; work         ;
+;    |pipeid:id_stage|                         ; 781 (23)          ; 992 (0)      ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage                                                                                               ; work         ;
+;       |cla32:b_adr|                          ; 62 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr                                                                                   ; work         ;
+;          |cla_32:cla|                        ; 62 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla                                                                        ; work         ;
+;             |cla_16:a0|                      ; 32 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0                                                              ; work         ;
+;                |cla_8:a0|                    ; 12 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a0                                                     ; work         ;
+;                   |cla_4:a0|                 ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a0                                            ; work         ;
+;                      |cla_2:a1|              ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a0|cla_2:a1                                   ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a0|cla_2:a1|add:a1                            ; work         ;
+;                         |gp:gp0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a0|cla_2:a1|gp:gp0                            ; work         ;
+;                   |cla_4:a1|                 ; 6 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1                                            ; work         ;
+;                      |cla_2:a0|              ; 3 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1|cla_2:a0                                   ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1|cla_2:a0|add:a1                            ; work         ;
+;                         |gp:gp0|             ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1|cla_2:a0|gp:gp0                            ; work         ;
+;                      |cla_2:a1|              ; 1 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1|cla_2:a1                                   ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1|cla_2:a1|add:a1                            ; work         ;
+;                      |gp:gp0|                ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1|gp:gp0                                     ; work         ;
+;                   |gp:gp0|                   ; 4 (4)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a0|gp:gp0                                              ; work         ;
+;                |cla_8:a1|                    ; 17 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a1                                                     ; work         ;
+;                   |cla_4:a0|                 ; 7 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a0                                            ; work         ;
+;                      |cla_2:a0|              ; 4 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a0|cla_2:a0                                   ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a0|cla_2:a0|add:a1                            ; work         ;
+;                         |gp:gp0|             ; 3 (3)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a0|cla_2:a0|gp:gp0                            ; work         ;
+;                      |cla_2:a1|              ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a0|cla_2:a1                                   ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a0|cla_2:a1|add:a1                            ; work         ;
+;                         |gp:gp0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a0|cla_2:a1|gp:gp0                            ; work         ;
+;                      |gp:gp0|                ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a0|gp:gp0                                     ; work         ;
+;                   |cla_4:a1|                 ; 8 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a1                                            ; work         ;
+;                      |cla_2:a0|              ; 3 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a1|cla_2:a0                                   ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a1|cla_2:a0|add:a1                            ; work         ;
+;                         |gp:gp0|             ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a1|cla_2:a0|gp:gp0                            ; work         ;
+;                      |cla_2:a1|              ; 3 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a1|cla_2:a1                                   ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a1|cla_2:a1|add:a1                            ; work         ;
+;                         |gp:gp0|             ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a1|cla_2:a1|gp:gp0                            ; work         ;
+;                      |gp:gp0|                ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a1|gp:gp0                                     ; work         ;
+;                   |gp:gp0|                   ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|cla_8:a1|gp:gp0                                              ; work         ;
+;                |gp:gp0|                      ; 3 (3)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a0|gp:gp0                                                       ; work         ;
+;             |cla_16:a1|                      ; 30 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1                                                              ; work         ;
+;                |cla_8:a0|                    ; 15 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a0                                                     ; work         ;
+;                   |cla_4:a0|                 ; 8 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0                                            ; work         ;
+;                      |cla_2:a0|              ; 4 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|cla_2:a0                                   ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|cla_2:a0|add:a1                            ; work         ;
+;                         |gp:gp0|             ; 3 (3)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|cla_2:a0|gp:gp0                            ; work         ;
+;                      |cla_2:a1|              ; 3 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|cla_2:a1                                   ; work         ;
+;                         |add:a0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|cla_2:a1|add:a0                            ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|cla_2:a1|add:a1                            ; work         ;
+;                         |gp:gp0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|cla_2:a1|gp:gp0                            ; work         ;
+;                      |gp:gp0|                ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|gp:gp0                                     ; work         ;
+;                   |cla_4:a1|                 ; 5 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1                                            ; work         ;
+;                      |cla_2:a0|              ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1|cla_2:a0                                   ; work         ;
+;                         |add:a0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1|cla_2:a0|add:a0                            ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1|cla_2:a0|add:a1                            ; work         ;
+;                      |cla_2:a1|              ; 1 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1|cla_2:a1                                   ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1|cla_2:a1|add:a1                            ; work         ;
+;                      |gp:gp0|                ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1|gp:gp0                                     ; work         ;
+;                   |gp:gp0|                   ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a0|gp:gp0                                              ; work         ;
+;                |cla_8:a1|                    ; 13 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a1                                                     ; work         ;
+;                   |cla_4:a0|                 ; 6 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0                                            ; work         ;
+;                      |cla_2:a0|              ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|cla_2:a0                                   ; work         ;
+;                         |add:a0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|cla_2:a0|add:a0                            ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|cla_2:a0|add:a1                            ; work         ;
+;                      |cla_2:a1|              ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|cla_2:a1                                   ; work         ;
+;                         |add:a0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|cla_2:a1|add:a0                            ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|cla_2:a1|add:a1                            ; work         ;
+;                      |gp:gp0|                ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|gp:gp0                                     ; work         ;
+;                   |cla_4:a1|                 ; 5 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1                                            ; work         ;
+;                      |cla_2:a0|              ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1|cla_2:a0                                   ; work         ;
+;                         |add:a0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1|cla_2:a0|add:a0                            ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1|cla_2:a0|add:a1                            ; work         ;
+;                      |cla_2:a1|              ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1|cla_2:a1                                   ; work         ;
+;                         |add:a0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1|cla_2:a1|add:a0                            ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1|cla_2:a1|add:a1                            ; work         ;
+;                      |gp:gp0|                ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1|gp:gp0                                     ; work         ;
+;                   |gp:gp0|                   ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|cla_8:a1|gp:gp0                                              ; work         ;
+;                |gp:gp0|                      ; 2 (2)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|cla32:b_adr|cla_32:cla|cla_16:a1|gp:gp0                                                       ; work         ;
+;       |mux2x5:d_r|                           ; 5 (5)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|mux2x5:d_r                                                                                    ; work         ;
+;       |mux4x32:s_a|                          ; 414 (414)         ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|mux4x32:s_a                                                                                   ; work         ;
+;       |mux4x32:s_b|                          ; 199 (199)         ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|mux4x32:s_b                                                                                   ; work         ;
+;       |pipeidcu:cu|                          ; 46 (46)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|pipeidcu:cu                                                                                   ; work         ;
+;       |regfile:r_f|                          ; 32 (32)           ; 992 (992)    ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeid:id_stage|regfile:r_f                                                                                   ; work         ;
+;    |pipeif:if_stage|                         ; 101 (0)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage                                                                                               ; work         ;
+;       |cla32:pc_plus4|                       ; 37 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4                                                                                ; work         ;
+;          |cla_32:cla|                        ; 37 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla                                                                     ; work         ;
+;             |cla_16:a0|                      ; 16 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0                                                           ; work         ;
+;                |cla_8:a0|                    ; 6 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a0                                                  ; work         ;
+;                   |cla_4:a0|                 ; 1 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a0                                         ; work         ;
+;                      |cla_2:a1|              ; 1 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a0|cla_2:a1                                ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a0|cla_2:a1|add:a1                         ; work         ;
+;                   |cla_4:a1|                 ; 4 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1                                         ; work         ;
+;                      |cla_2:a0|              ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1|cla_2:a0                                ; work         ;
+;                         |add:a0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1|cla_2:a0|add:a0                         ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1|cla_2:a0|add:a1                         ; work         ;
+;                      |cla_2:a1|              ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1|cla_2:a1                                ; work         ;
+;                         |add:a0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1|cla_2:a1|add:a0                         ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a1|cla_2:a1|add:a1                         ; work         ;
+;                   |gp:gp0|                   ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a0|gp:gp0                                           ; work         ;
+;                |cla_8:a1|                    ; 9 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a1                                                  ; work         ;
+;                   |cla_4:a0|                 ; 4 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a0                                         ; work         ;
+;                      |cla_2:a0|              ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a0|cla_2:a0                                ; work         ;
+;                         |add:a0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a0|cla_2:a0|add:a0                         ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a0|cla_2:a0|add:a1                         ; work         ;
+;                      |cla_2:a1|              ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a0|cla_2:a1                                ; work         ;
+;                         |add:a0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a0|cla_2:a1|add:a0                         ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a0|cla_2:a1|add:a1                         ; work         ;
+;                   |cla_4:a1|                 ; 4 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a1                                         ; work         ;
+;                      |cla_2:a0|              ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a1|cla_2:a0                                ; work         ;
+;                         |add:a0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a1|cla_2:a0|add:a0                         ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a1|cla_2:a0|add:a1                         ; work         ;
+;                      |cla_2:a1|              ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a1|cla_2:a1                                ; work         ;
+;                         |add:a0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a1|cla_2:a1|add:a0                         ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a1|cla_4:a1|cla_2:a1|add:a1                         ; work         ;
+;                   |gp:gp0|                   ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a1|gp:gp0                                           ; work         ;
+;                |gp:gp0|                      ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|gp:gp0                                                    ; work         ;
+;             |cla_16:a1|                      ; 21 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1                                                           ; work         ;
+;                |cla_8:a0|                    ; 10 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a0                                                  ; work         ;
+;                   |cla_4:a0|                 ; 5 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0                                         ; work         ;
+;                      |cla_2:a0|              ; 3 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|cla_2:a0                                ; work         ;
+;                         |add:a0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|cla_2:a0|add:a0                         ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|cla_2:a0|add:a1                         ; work         ;
+;                         |gp:gp0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|cla_2:a0|gp:gp0                         ; work         ;
+;                      |cla_2:a1|              ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|cla_2:a1                                ; work         ;
+;                         |add:a0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|cla_2:a1|add:a0                         ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a0|cla_2:a1|add:a1                         ; work         ;
+;                   |cla_4:a1|                 ; 4 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1                                         ; work         ;
+;                      |cla_2:a0|              ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1|cla_2:a0                                ; work         ;
+;                         |add:a0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1|cla_2:a0|add:a0                         ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1|cla_2:a0|add:a1                         ; work         ;
+;                      |cla_2:a1|              ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1|cla_2:a1                                ; work         ;
+;                         |add:a0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1|cla_2:a1|add:a0                         ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a0|cla_4:a1|cla_2:a1|add:a1                         ; work         ;
+;                   |gp:gp0|                   ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a0|gp:gp0                                           ; work         ;
+;                |cla_8:a1|                    ; 10 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a1                                                  ; work         ;
+;                   |cla_4:a0|                 ; 5 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0                                         ; work         ;
+;                      |cla_2:a0|              ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|cla_2:a0                                ; work         ;
+;                         |add:a0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|cla_2:a0|add:a0                         ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|cla_2:a0|add:a1                         ; work         ;
+;                      |cla_2:a1|              ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|cla_2:a1                                ; work         ;
+;                         |add:a0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|cla_2:a1|add:a0                         ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|cla_2:a1|add:a1                         ; work         ;
+;                      |gp:gp0|                ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a0|gp:gp0                                  ; work         ;
+;                   |cla_4:a1|                 ; 5 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1                                         ; work         ;
+;                      |cla_2:a0|              ; 3 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1|cla_2:a0                                ; work         ;
+;                         |add:a0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1|cla_2:a0|add:a0                         ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1|cla_2:a0|add:a1                         ; work         ;
+;                         |gp:gp0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1|cla_2:a0|gp:gp0                         ; work         ;
+;                      |cla_2:a1|              ; 2 (0)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1|cla_2:a1                                ; work         ;
+;                         |add:a0|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1|cla_2:a1|add:a0                         ; work         ;
+;                         |add:a1|             ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|cla_8:a1|cla_4:a1|cla_2:a1|add:a1                         ; work         ;
+;                |gp:gp0|                      ; 1 (1)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a1|gp:gp0                                                    ; work         ;
+;       |mux4x32:next_pc|                      ; 34 (34)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|mux4x32:next_pc                                                                               ; work         ;
+;       |pl_inst_mem:inst_mem|                 ; 30 (30)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeif:if_stage|pl_inst_mem:inst_mem                                                                          ; work         ;
+;    |pipeir:fd_reg|                           ; 1 (0)             ; 61 (0)       ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeir:fd_reg                                                                                                 ; work         ;
+;       |dffe32:instruction|                   ; 0 (0)             ; 29 (29)      ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeir:fd_reg|dffe32:instruction                                                                              ; work         ;
+;       |dffe32:pc_plus4|                      ; 1 (1)             ; 32 (32)      ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipeir:fd_reg|dffe32:pc_plus4                                                                                 ; work         ;
+;    |pipemem:mem_stage|                       ; 36 (0)            ; 108 (0)      ; 1024              ; 0          ; 0    ; 0            ; |pipelinedcpu|pipemem:mem_stage                                                                                             ; work         ;
+;       |pl_data_mem:dmem|                     ; 36 (36)           ; 108 (108)    ; 1024              ; 0          ; 0    ; 0            ; |pipelinedcpu|pipemem:mem_stage|pl_data_mem:dmem                                                                            ; work         ;
+;          |altsyncram:ram_rtl_0|              ; 0 (0)             ; 0 (0)        ; 1024              ; 0          ; 0    ; 0            ; |pipelinedcpu|pipemem:mem_stage|pl_data_mem:dmem|altsyncram:ram_rtl_0                                                       ; work         ;
+;             |altsyncram_3um1:auto_generated| ; 0 (0)             ; 0 (0)        ; 1024              ; 0          ; 0    ; 0            ; |pipelinedcpu|pipemem:mem_stage|pl_data_mem:dmem|altsyncram:ram_rtl_0|altsyncram_3um1:auto_generated                        ; work         ;
+;    |pipemwreg:mw_reg|                        ; 0 (0)             ; 71 (71)      ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipemwreg:mw_reg                                                                                              ; work         ;
+;    |pipepc:prog_cnt|                         ; 1 (0)             ; 32 (0)       ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipepc:prog_cnt                                                                                               ; work         ;
+;       |dffe32:prog_cntr|                     ; 1 (1)             ; 32 (32)      ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipepc:prog_cnt|dffe32:prog_cntr                                                                              ; work         ;
+;    |pipewb:wb_stage|                         ; 32 (0)            ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipewb:wb_stage                                                                                               ; work         ;
+;       |mux2x32:wb|                           ; 32 (32)           ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |pipelinedcpu|pipewb:wb_stage|mux2x32:wb                                                                                    ; work         ;
++----------------------------------------------+-------------------+--------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                                        ;
++---------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+----------------------------------------+
+; Name                                                                                              ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF                                    ;
++---------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+----------------------------------------+
+; pipemem:mem_stage|pl_data_mem:dmem|altsyncram:ram_rtl_0|altsyncram_3um1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 32           ; 32           ; 32           ; 32           ; 1024 ; db/PL.ram0_pl_data_mem_226109e.hdl.mif ;
++---------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+----------------------------------------+
+
+
++---------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                          ;
++----------------------------------------+----------------------------------------------------+
+; Register name                          ; Reason for Removal                                 ;
++----------------------------------------+----------------------------------------------------+
+; pipedereg:de_reg|eimm[16..30]          ; Merged with pipedereg:de_reg|eimm[31]              ;
+; pipeir:fd_reg|dffe32:instruction|q[9]  ; Merged with pipeir:fd_reg|dffe32:instruction|q[7]  ;
+; pipeir:fd_reg|dffe32:instruction|q[30] ; Merged with pipeir:fd_reg|dffe32:instruction|q[20] ;
+; pipedereg:de_reg|eimm[9]               ; Merged with pipedereg:de_reg|eimm[7]               ;
+; pipeir:fd_reg|dffe32:instruction|q[20] ; Stuck at GND due to stuck port data_in             ;
+; Total Number of Removed Registers = 19 ;                                                    ;
++----------------------------------------+----------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 1463  ;
+; Number of registers using Synchronous Clear  ; 15    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 1361  ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 1117  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------------------------------------------+
+; Inverted Register Statistics                                      ;
++---------------------------------------------------------+---------+
+; Inverted Register                                       ; Fan out ;
++---------------------------------------------------------+---------+
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[12] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[74] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[66] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[70] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[72] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[62] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[64] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[68] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[34] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[54] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[56] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[58] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[48] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[50] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[60] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[38] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[40] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[46] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[36] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[26] ; 3       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[28] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[20] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[22] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[24] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[14] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[16] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[18] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[30] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[32] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[42] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[44] ; 1       ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[52] ; 1       ;
+; Total number of inverted registers = 32                 ;         ;
++---------------------------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------------------+
+; Registers Added for RAM Pass-Through Logic                                                             ;
++---------------------------------------------------------+----------------------------------------------+
+; Register Name                                           ; RAM Name                                     ;
++---------------------------------------------------------+----------------------------------------------+
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[0]  ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[1]  ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[2]  ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[3]  ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[4]  ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[5]  ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[6]  ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[7]  ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[8]  ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[9]  ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[10] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[11] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[12] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[13] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[14] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[15] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[16] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[17] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[18] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[19] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[20] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[21] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[22] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[23] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[24] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[25] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[26] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[27] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[28] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[29] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[30] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[31] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[32] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[33] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[34] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[35] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[36] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[37] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[38] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[39] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[40] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[41] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[42] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[43] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[44] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[45] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[46] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[47] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[48] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[49] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[50] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[51] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[52] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[53] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[54] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[55] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[56] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[57] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[58] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[59] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[60] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[61] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[62] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[63] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[64] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[65] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[66] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[67] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[68] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[69] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[70] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[71] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[72] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[73] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
+; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0_bypass[74] ; pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0 ;
++---------------------------------------------------------+----------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |pipelinedcpu|pipepc:prog_cnt|dffe32:prog_cntr|q[1]    ;
+; 4:1                ; 29 bits   ; 58 LEs        ; 58 LEs               ; 0 LEs                  ; Yes        ; |pipelinedcpu|pipepc:prog_cnt|dffe32:prog_cntr|q[2]    ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; No name available in netlist                           ;
+; 4:1                ; 49 bits   ; 98 LEs        ; 98 LEs               ; 0 LEs                  ; No         ; No name available in netlist                           ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; No name available in netlist                           ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; No name available in netlist                           ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; No name available in netlist                           ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; No name available in netlist                           ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; No name available in netlist                           ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |pipelinedcpu|pipeid:id_stage|pipeidcu:cu|fwda[1]      ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |pipelinedcpu|pipeid:id_stage|pipeidcu:cu|fwdb[1]      ;
+; 19:1               ; 32 bits   ; 384 LEs       ; 384 LEs              ; 0 LEs                  ; No         ; |pipelinedcpu|pipeid:id_stage|mux4x32:s_b|Mux19        ;
+; 35:1               ; 32 bits   ; 736 LEs       ; 736 LEs              ; 0 LEs                  ; No         ; |pipelinedcpu|pipeid:id_stage|mux4x32:s_a|Mux13        ;
+; 14:1               ; 5 bits    ; 45 LEs        ; 45 LEs               ; 0 LEs                  ; No         ; |pipelinedcpu|pipeexe:exe_stage|mux2x32:save_pc8|y[7]  ;
+; 15:1               ; 8 bits    ; 80 LEs        ; 80 LEs               ; 0 LEs                  ; No         ; |pipelinedcpu|pipeexe:exe_stage|mux2x32:save_pc8|y[23] ;
+; 14:1               ; 3 bits    ; 27 LEs        ; 27 LEs               ; 0 LEs                  ; No         ; |pipelinedcpu|pipeexe:exe_stage|mux2x32:save_pc8|y[13] ;
+; 17:1               ; 3 bits    ; 33 LEs        ; 33 LEs               ; 0 LEs                  ; No         ; |pipelinedcpu|pipeexe:exe_stage|mux2x32:save_pc8|y[3]  ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |pipelinedcpu|pipeexe:exe_stage|mux2x32:save_pc8|y[9]  ;
+; 17:1               ; 2 bits    ; 22 LEs        ; 20 LEs               ; 2 LEs                  ; No         ; |pipelinedcpu|pipeexe:exe_stage|mux2x32:save_pc8|y[26] ;
+; 18:1               ; 3 bits    ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; No         ; |pipelinedcpu|pipeexe:exe_stage|mux2x32:save_pc8|y[28] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------+
+; Source assignments for pipemem:mem_stage|pl_data_mem:dmem|altsyncram:ram_rtl_0|altsyncram_3um1:auto_generated ;
++---------------------------------+--------------------+------+-------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                              ;
++---------------------------------+--------------------+------+-------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                               ;
++---------------------------------+--------------------+------+-------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: pipemem:mem_stage|pl_data_mem:dmem|altsyncram:ram_rtl_0 ;
++------------------------------------+----------------------------------------+----------------------------+
+; Parameter Name                     ; Value                                  ; Type                       ;
++------------------------------------+----------------------------------------+----------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                                      ; Untyped                    ;
+; AUTO_CARRY_CHAINS                  ; ON                                     ; AUTO_CARRY                 ;
+; IGNORE_CARRY_BUFFERS               ; OFF                                    ; IGNORE_CARRY               ;
+; AUTO_CASCADE_CHAINS                ; ON                                     ; AUTO_CASCADE               ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                                    ; IGNORE_CASCADE             ;
+; WIDTH_BYTEENA                      ; 1                                      ; Untyped                    ;
+; OPERATION_MODE                     ; DUAL_PORT                              ; Untyped                    ;
+; WIDTH_A                            ; 32                                     ; Untyped                    ;
+; WIDTHAD_A                          ; 5                                      ; Untyped                    ;
+; NUMWORDS_A                         ; 32                                     ; Untyped                    ;
+; OUTDATA_REG_A                      ; UNREGISTERED                           ; Untyped                    ;
+; ADDRESS_ACLR_A                     ; NONE                                   ; Untyped                    ;
+; OUTDATA_ACLR_A                     ; NONE                                   ; Untyped                    ;
+; WRCONTROL_ACLR_A                   ; NONE                                   ; Untyped                    ;
+; INDATA_ACLR_A                      ; NONE                                   ; Untyped                    ;
+; BYTEENA_ACLR_A                     ; NONE                                   ; Untyped                    ;
+; WIDTH_B                            ; 32                                     ; Untyped                    ;
+; WIDTHAD_B                          ; 5                                      ; Untyped                    ;
+; NUMWORDS_B                         ; 32                                     ; Untyped                    ;
+; INDATA_REG_B                       ; CLOCK1                                 ; Untyped                    ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                 ; Untyped                    ;
+; RDCONTROL_REG_B                    ; CLOCK1                                 ; Untyped                    ;
+; ADDRESS_REG_B                      ; CLOCK0                                 ; Untyped                    ;
+; OUTDATA_REG_B                      ; UNREGISTERED                           ; Untyped                    ;
+; BYTEENA_REG_B                      ; CLOCK1                                 ; Untyped                    ;
+; INDATA_ACLR_B                      ; NONE                                   ; Untyped                    ;
+; WRCONTROL_ACLR_B                   ; NONE                                   ; Untyped                    ;
+; ADDRESS_ACLR_B                     ; NONE                                   ; Untyped                    ;
+; OUTDATA_ACLR_B                     ; NONE                                   ; Untyped                    ;
+; RDCONTROL_ACLR_B                   ; NONE                                   ; Untyped                    ;
+; BYTEENA_ACLR_B                     ; NONE                                   ; Untyped                    ;
+; WIDTH_BYTEENA_A                    ; 1                                      ; Untyped                    ;
+; WIDTH_BYTEENA_B                    ; 1                                      ; Untyped                    ;
+; RAM_BLOCK_TYPE                     ; AUTO                                   ; Untyped                    ;
+; BYTE_SIZE                          ; 8                                      ; Untyped                    ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                              ; Untyped                    ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ                   ; Untyped                    ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                   ; Untyped                    ;
+; INIT_FILE                          ; db/PL.ram0_pl_data_mem_226109e.hdl.mif ; Untyped                    ;
+; INIT_FILE_LAYOUT                   ; PORT_A                                 ; Untyped                    ;
+; MAXIMUM_DEPTH                      ; 0                                      ; Untyped                    ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                                 ; Untyped                    ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                                 ; Untyped                    ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                 ; Untyped                    ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                 ; Untyped                    ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                        ; Untyped                    ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                        ; Untyped                    ;
+; ENABLE_ECC                         ; FALSE                                  ; Untyped                    ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                  ; Untyped                    ;
+; WIDTH_ECCSTATUS                    ; 3                                      ; Untyped                    ;
+; DEVICE_FAMILY                      ; Cyclone V                              ; Untyped                    ;
+; CBXI_PARAMETER                     ; altsyncram_3um1                        ; Untyped                    ;
++------------------------------------+----------------------------------------+----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                                    ;
++-------------------------------------------+---------------------------------------------------------+
+; Name                                      ; Value                                                   ;
++-------------------------------------------+---------------------------------------------------------+
+; Number of entity instances                ; 1                                                       ;
+; Entity Instance                           ; pipemem:mem_stage|pl_data_mem:dmem|altsyncram:ram_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                               ;
+;     -- WIDTH_A                            ; 32                                                      ;
+;     -- NUMWORDS_A                         ; 32                                                      ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                            ;
+;     -- WIDTH_B                            ; 32                                                      ;
+;     -- NUMWORDS_B                         ; 32                                                      ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                                  ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                            ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                    ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                               ;
++-------------------------------------------+---------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "pipeexe:exe_stage|alu:al_unit"                                                      ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; z    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------+
+; Port Connectivity Checks: "pipeexe:exe_stage|cla32:ret_addr" ;
++----------+-------+----------+--------------------------------+
+; Port     ; Type  ; Severity ; Details                        ;
++----------+-------+----------+--------------------------------+
+; b[31..3] ; Input ; Info     ; Stuck at GND                   ;
+; b[1..0]  ; Input ; Info     ; Stuck at GND                   ;
+; b[2]     ; Input ; Info     ; Stuck at VCC                   ;
+; ci       ; Input ; Info     ; Stuck at GND                   ;
++----------+-------+----------+--------------------------------+
+
+
++---------------------------------------------------------+
+; Port Connectivity Checks: "pipeid:id_stage|cla32:b_adr" ;
++---------+-------+----------+----------------------------+
+; Port    ; Type  ; Severity ; Details                    ;
++---------+-------+----------+----------------------------+
+; b[1..0] ; Input ; Info     ; Stuck at GND               ;
+; ci      ; Input ; Info     ; Stuck at GND               ;
++---------+-------+----------+----------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "pipeif:if_stage|cla32:pc_plus4|cla_32:cla"                                           ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; g_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; p_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------+
+; Port Connectivity Checks: "pipeif:if_stage|cla32:pc_plus4" ;
++----------+-------+----------+------------------------------+
+; Port     ; Type  ; Severity ; Details                      ;
++----------+-------+----------+------------------------------+
+; b[31..3] ; Input ; Info     ; Stuck at GND                 ;
+; b[1..0]  ; Input ; Info     ; Stuck at GND                 ;
+; b[2]     ; Input ; Info     ; Stuck at VCC                 ;
+; ci       ; Input ; Info     ; Stuck at GND                 ;
++----------+-------+----------+------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 1463                        ;
+;     CLR               ; 276                         ;
+;     ENA               ; 32                          ;
+;     ENA CLR           ; 1070                        ;
+;     ENA CLR SCLR      ; 15                          ;
+;     plain             ; 70                          ;
+; arriav_lcell_comb     ; 1515                        ;
+;     extend            ; 30                          ;
+;         7 data inputs ; 30                          ;
+;     normal            ; 1485                        ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 1                           ;
+;         2 data inputs ; 96                          ;
+;         3 data inputs ; 186                         ;
+;         4 data inputs ; 127                         ;
+;         5 data inputs ; 180                         ;
+;         6 data inputs ; 894                         ;
+; boundary_port         ; 162                         ;
+; stratixv_ram_block    ; 32                          ;
+;                       ;                             ;
+; Max LUT depth         ; 13.00                       ;
+; Average LUT depth     ; 8.98                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:04     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 14.0.0 Build 200 06/17/2014 SJ Full Version
+    Info: Processing started: Sun Jul 14 11:04:18 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off PL -c PL
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file code/add.v
+    Info (12023): Found entity 1: add
+Info (12021): Found 1 design units, including 1 entities, in source file code/cla_2.v
+    Info (12023): Found entity 1: cla_2
+Info (12021): Found 1 design units, including 1 entities, in source file code/cla_4.v
+    Info (12023): Found entity 1: cla_4
+Info (12021): Found 1 design units, including 1 entities, in source file code/cla_8.v
+    Info (12023): Found entity 1: cla_8
+Info (12021): Found 1 design units, including 1 entities, in source file code/gp.v
+    Info (12023): Found entity 1: gp
+Info (12021): Found 1 design units, including 1 entities, in source file code/cla_16.v
+    Info (12023): Found entity 1: cla_16
+Info (12021): Found 1 design units, including 1 entities, in source file code/shift.v
+    Info (12023): Found entity 1: shift
+Info (12021): Found 1 design units, including 1 entities, in source file code/cla_32.v
+    Info (12023): Found entity 1: cla_32
+Info (12021): Found 1 design units, including 1 entities, in source file code/addsub32.v
+    Info (12023): Found entity 1: addsub32
+Info (12021): Found 1 design units, including 1 entities, in source file code/regfile.v
+    Info (12023): Found entity 1: regfile
+Info (12021): Found 1 design units, including 1 entities, in source file code/pl_inst_mem.v
+    Info (12023): Found entity 1: pl_inst_mem
+Info (12021): Found 1 design units, including 1 entities, in source file code/pl_data_mem.v
+    Info (12023): Found entity 1: pl_data_mem
+Info (12021): Found 1 design units, including 1 entities, in source file code/pipewb.v
+    Info (12023): Found entity 1: pipewb
+Info (12021): Found 1 design units, including 1 entities, in source file code/pipepc.v
+    Info (12023): Found entity 1: pipepc
+Info (12021): Found 1 design units, including 1 entities, in source file code/pipemwreg.v
+    Info (12023): Found entity 1: pipemwreg
+Info (12021): Found 1 design units, including 1 entities, in source file code/pipemem.v
+    Info (12023): Found entity 1: pipemem
+Info (12021): Found 1 design units, including 1 entities, in source file code/pipelinedcpu.v
+    Info (12023): Found entity 1: pipelinedcpu
+Info (12021): Found 1 design units, including 1 entities, in source file code/pipeir.v
+    Info (12023): Found entity 1: pipeir
+Info (12021): Found 1 design units, including 1 entities, in source file code/pipeif.v
+    Info (12023): Found entity 1: pipeif
+Info (12021): Found 1 design units, including 1 entities, in source file code/pipeidcu.v
+    Info (12023): Found entity 1: pipeidcu
+Info (12021): Found 1 design units, including 1 entities, in source file code/pipeid.v
+    Info (12023): Found entity 1: pipeid
+Info (12021): Found 1 design units, including 1 entities, in source file code/pipeexe.v
+    Info (12023): Found entity 1: pipeexe
+Info (12021): Found 1 design units, including 1 entities, in source file code/pipeemreg.v
+    Info (12023): Found entity 1: pipeemreg
+Info (12021): Found 1 design units, including 1 entities, in source file code/pipedereg.v
+    Info (12023): Found entity 1: pipedereg
+Info (12021): Found 1 design units, including 1 entities, in source file code/mux4x32.v
+    Info (12023): Found entity 1: mux4x32
+Info (12021): Found 1 design units, including 1 entities, in source file code/mux2x32.v
+    Info (12023): Found entity 1: mux2x32
+Info (12021): Found 1 design units, including 1 entities, in source file code/mux2x5.v
+    Info (12023): Found entity 1: mux2x5
+Info (12021): Found 1 design units, including 1 entities, in source file code/dffe32.v
+    Info (12023): Found entity 1: dffe32
+Info (12021): Found 1 design units, including 1 entities, in source file code/cla32.v
+    Info (12023): Found entity 1: cla32
+Info (12021): Found 1 design units, including 1 entities, in source file code/alu.v
+    Info (12023): Found entity 1: alu
+Info (12021): Found 1 design units, including 1 entities, in source file pl.v
+    Info (12023): Found entity 1: PL
+Info (12127): Elaborating entity "pipelinedcpu" for the top level hierarchy
+Info (12128): Elaborating entity "pipepc" for hierarchy "pipepc:prog_cnt"
+Info (12128): Elaborating entity "dffe32" for hierarchy "pipepc:prog_cnt|dffe32:prog_cntr"
+Info (12128): Elaborating entity "pipeif" for hierarchy "pipeif:if_stage"
+Info (12128): Elaborating entity "mux4x32" for hierarchy "pipeif:if_stage|mux4x32:next_pc"
+Info (12128): Elaborating entity "cla32" for hierarchy "pipeif:if_stage|cla32:pc_plus4"
+Info (12128): Elaborating entity "cla_32" for hierarchy "pipeif:if_stage|cla32:pc_plus4|cla_32:cla"
+Info (12128): Elaborating entity "cla_16" for hierarchy "pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0"
+Info (12128): Elaborating entity "cla_8" for hierarchy "pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a0"
+Info (12128): Elaborating entity "cla_4" for hierarchy "pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a0"
+Info (12128): Elaborating entity "cla_2" for hierarchy "pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a0|cla_2:a0"
+Info (12128): Elaborating entity "add" for hierarchy "pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a0|cla_2:a0|add:a0"
+Info (12128): Elaborating entity "gp" for hierarchy "pipeif:if_stage|cla32:pc_plus4|cla_32:cla|cla_16:a0|cla_8:a0|cla_4:a0|cla_2:a0|gp:gp0"
+Info (12128): Elaborating entity "pl_inst_mem" for hierarchy "pipeif:if_stage|pl_inst_mem:inst_mem"
+Warning (10030): Net "rom[35..63]" at pl_inst_mem.v(4) has no driver or initial value, using a default initial value '0'
+Info (12128): Elaborating entity "pipeir" for hierarchy "pipeir:fd_reg"
+Info (12128): Elaborating entity "pipeid" for hierarchy "pipeid:id_stage"
+Info (12128): Elaborating entity "pipeidcu" for hierarchy "pipeid:id_stage|pipeidcu:cu"
+Info (12128): Elaborating entity "regfile" for hierarchy "pipeid:id_stage|regfile:r_f"
+Warning (10240): Verilog HDL Always Construct warning at regfile.v(13): inferring latch(es) for variable "i", which holds its previous value in one or more paths through the always construct
+Info (12128): Elaborating entity "mux2x5" for hierarchy "pipeid:id_stage|mux2x5:d_r"
+Info (12128): Elaborating entity "pipedereg" for hierarchy "pipedereg:de_reg"
+Info (12128): Elaborating entity "pipeexe" for hierarchy "pipeexe:exe_stage"
+Info (12128): Elaborating entity "mux2x32" for hierarchy "pipeexe:exe_stage|mux2x32:alu_in_a"
+Info (12128): Elaborating entity "alu" for hierarchy "pipeexe:exe_stage|alu:al_unit"
+Info (12128): Elaborating entity "addsub32" for hierarchy "pipeexe:exe_stage|alu:al_unit|addsub32:as32"
+Info (12128): Elaborating entity "shift" for hierarchy "pipeexe:exe_stage|alu:al_unit|shift:shifter"
+Info (12128): Elaborating entity "pipeemreg" for hierarchy "pipeemreg:em_reg"
+Info (12128): Elaborating entity "pipemem" for hierarchy "pipemem:mem_stage"
+Info (12128): Elaborating entity "pl_data_mem" for hierarchy "pipemem:mem_stage|pl_data_mem:dmem"
+Info (12128): Elaborating entity "pipemwreg" for hierarchy "pipemwreg:mw_reg"
+Info (12128): Elaborating entity "pipewb" for hierarchy "pipewb:wb_stage"
+Warning (276020): Inferred RAM node "pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
+Info (19000): Inferred 1 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "pipemem:mem_stage|pl_data_mem:dmem|ram_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 32
+        Info (286033): Parameter WIDTHAD_A set to 5
+        Info (286033): Parameter NUMWORDS_A set to 32
+        Info (286033): Parameter WIDTH_B set to 32
+        Info (286033): Parameter WIDTHAD_B set to 5
+        Info (286033): Parameter NUMWORDS_B set to 32
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter INIT_FILE set to db/PL.ram0_pl_data_mem_226109e.hdl.mif
+Info (12130): Elaborated megafunction instantiation "pipemem:mem_stage|pl_data_mem:dmem|altsyncram:ram_rtl_0"
+Info (12133): Instantiated megafunction "pipemem:mem_stage|pl_data_mem:dmem|altsyncram:ram_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "32"
+    Info (12134): Parameter "WIDTHAD_A" = "5"
+    Info (12134): Parameter "NUMWORDS_A" = "32"
+    Info (12134): Parameter "WIDTH_B" = "32"
+    Info (12134): Parameter "WIDTHAD_B" = "5"
+    Info (12134): Parameter "NUMWORDS_B" = "32"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "INIT_FILE" = "db/PL.ram0_pl_data_mem_226109e.hdl.mif"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_3um1.tdf
+    Info (12023): Found entity 1: altsyncram_3um1
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "inst[20]" is stuck at GND
+    Warning (13410): Pin "inst[30]" is stuck at GND
+Info (286030): Timing-Driven Synthesis is running
+Info (144001): Generated suppressed messages file C:/Users/ZJ/Desktop/Practice/PipeLine/output_files/PL.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 3094 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 160 output pins
+    Info (21061): Implemented 2900 logic cells
+    Info (21064): Implemented 32 RAM segments
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 21 warnings
+    Info: Peak virtual memory: 4915 megabytes
+    Info: Processing ended: Sun Jul 14 11:04:25 2024
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:06
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/ZJ/Desktop/Practice/PipeLine/output_files/PL.map.smsg.
+
+
