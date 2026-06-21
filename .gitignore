@@ -30,4 +30,7 @@ c5_pin_model_dump.txt
 *.pti_db_list.ddb
 *.tis_db_list.ddb
 
+# 仿真波形输出(VCD)为生成物
+*.vcd
+
 # 说明:.stp(SignalTap)、.cdf(编程链)、.mif、.sdc、.vwf 等为设计/配置文件,保留入库

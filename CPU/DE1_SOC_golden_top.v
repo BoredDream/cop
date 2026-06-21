@@ -24,6 +24,7 @@ pll_cpu pll_cpu_inst(
 // ===== CPU内部信号 =====
 wire [31:0] inst, pc, aluout, memout, data;
 wire        wmem;
+wire        inta;
 wire [5:0]  opcode = inst[31:26];
 wire [5:0]  func   = inst[5:0];
 
@@ -55,7 +56,11 @@ assign slow_clk = clk_div[24];
 // ===== CPU时钟选择 =====
 wire cpu_clk = (SW[3] == 1'b0) ? clk_10MHz : slow_clk;
 
-// ===== CPU实例化（完全不变） =====
+// ===== 外部中断输入 =====
+// KEY[1] 低有效,教材 intr 为高有效,因此取反
+wire intr = ~KEY[1];
+
+// ===== CPU实例化 =====
 sccpu_dataflow cpu (
     .clock(cpu_clk),
     .resetn(KEY[0]),
@@ -64,7 +69,9 @@ sccpu_dataflow cpu (
     .pc(pc),
     .wmem(wmem),
     .alu(aluout),
-    .data(data)
+    .data(data),
+    .intr(intr),
+    .inta(inta)
 );
 
 scinstmem imem (.a(pc), .inst(inst));
@@ -92,13 +99,13 @@ hex7 seg5(.din(display_data[23:20]), .seg(HEX5));
 
 // ===== LED显示 =====
 // LED[5:0]: OPCODE
-// LED[6]: 保留
-// LED[7]: 程序结束标志 (停在0x5C)
+// LED[6]: 中断确认 inta
+// LED[7]: 程序结束标志 (停在新测试程序的 finish 死循环 0xC0)
 // LED[8]: 速度模式 (0=快速, 1=慢速)
 // LED[9]: 复位状态
 assign LEDR[5:0] = KEY[0] ? opcode : 6'b000000;
-assign LEDR[6]   = 1'b0;
-assign LEDR[7]   = (pc == 32'h0000005C);
+assign LEDR[6]   = inta;
+assign LEDR[7]   = (pc == 32'h000000C0);
 assign LEDR[8]   = SW[3];
 assign LEDR[9]   = KEY[0];
 

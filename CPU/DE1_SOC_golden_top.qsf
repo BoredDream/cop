@@ -143,6 +143,7 @@ set_global_assignment -name VERILOG_FILE sccpu/mux4x32.v
 set_global_assignment -name VERILOG_FILE sccpu/mux2x32.v
 set_global_assignment -name VERILOG_FILE sccpu/mux2x5.v
 set_global_assignment -name VERILOG_FILE sccpu/dff32.v
+set_global_assignment -name VERILOG_FILE sccpu/dffe32.v
 set_global_assignment -name VERILOG_FILE sccpu/cla32.v
 set_global_assignment -name VERILOG_FILE sccpu/alu.v
 set_global_assignment -name VERILOG_FILE sccpu/addsub32.v

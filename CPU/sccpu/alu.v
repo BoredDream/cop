@@ -1,8 +1,9 @@
-module alu (a,b,aluc,r,z);
+module alu (a,b,aluc,r,z,v);
 input [31:0] a,b;                                                                // aluc[3:0]
 input [3:0] aluc;                                                              //
 output  [31:0]  r;                                                                  // x 0 0 0  ADD
 output z;                                                                                 // x1 0 0   SUB
+output v;                                                                                 // overflow (add/sub/addi)
 wire  [31:0]  d_and = a & b;                                              // x 0 01   WD
 wire  [31:0] d_or = a | b;                                              // x1 01   0R
 wire  [31:0] d_xor = a ^ b;                                              // x 0 1 0   XOR
@@ -14,4 +15,9 @@ addsub32 as32  (a,b,aluc[2],d_as);
 shift shifter  (b,a[4:0],aluc[2],aluc[3],d_sh) ;
 mux4x32 se1ect  (d_as,d_and_or, d_xor_1ui, d_sh, aluc[1:0],r);
 assign z = ~|r;
+// overflow detection for signed add/sub (aluc[1:0] == 00)
+assign v = ~aluc[2] & ~a[31] & ~b[31] &  r[31] & ~aluc[1] & ~aluc[0] |
+           ~aluc[2] &  a[31] &  b[31] & ~r[31] & ~aluc[1] & ~aluc[0] |
+            aluc[2] & ~a[31] &  b[31] &  r[31] & ~aluc[1] & ~aluc[0] |
+            aluc[2] &  a[31] & ~b[31] & ~r[31] & ~aluc[1] & ~aluc[0];
 endmodule    
