@@ -1,1 +1,33 @@
+# 本地 CLAUDE.md 不入库
 /CLAUDE.md
+
+# ===== Quartus 生成物(可由编译重新产生,不入库) =====
+# 编译数据库
+db/
+incremental_db/
+# 工作区 / 自动备份(每用户、临时)
+*.qws
+*.bak
+# 编译报告 / 摘要 / 日志
+*.rpt
+*.summary
+*.smsg
+*.log
+# 烧写位流 / 时序 / 引脚 / 其它构建产物
+*.sof
+*.pof
+*.jdi
+*.pin
+*.done
+*.sld
+*.qdf
+*.jic
+*.rbf
+*.map
+# 工具转储
+PLLJ_PLLSPE_INFO.txt
+c5_pin_model_dump.txt
+*.pti_db_list.ddb
+*.tis_db_list.ddb
+
+# 说明:.stp(SignalTap)、.cdf(编程链)、.mif、.sdc、.vwf 等为设计/配置文件,保留入库

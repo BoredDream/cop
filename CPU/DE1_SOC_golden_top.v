@@ -21,8 +21,14 @@ pll_cpu pll_cpu_inst(
     .locked()    
 );
 
+// ===== CPU内部信号 =====
+wire [31:0] inst, pc, aluout, memout, data;
+wire        wmem;
+wire [5:0]  opcode = inst[31:26];
+wire [5:0]  func   = inst[5:0];
+
 // ============================================================
-// ★★★ SignalTap 调试信号（保持原有信号，增加调试输出） ★★★
+// ★★★ SignalTap 调试信号（在内部信号声明之后引用，便于阅读） ★★★
 // ============================================================
 wire [31:0] debug_pc /* synthesis keep */ = pc;
 wire [31:0] debug_inst /* synthesis keep */ = inst;
@@ -31,12 +37,6 @@ wire [31:0] debug_memout /* synthesis keep */ = memout;
 wire [5:0]  debug_opcode /* synthesis keep */ = opcode;
 wire [5:0]  debug_func /* synthesis keep */ = func;
 wire        debug_wmem /* synthesis keep */ = wmem;
-
-// ===== CPU内部信号 =====
-wire [31:0] inst, pc, aluout, memout, data;
-wire        wmem;
-wire [5:0]  opcode = inst[31:26];
-wire [5:0]  func   = inst[5:0];
 
 // ===== 慢速时钟分频（约1Hz） =====
 reg [31:0] clk_div;

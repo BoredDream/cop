@@ -146,10 +146,9 @@ set_global_assignment -name VERILOG_FILE sccpu/dff32.v
 set_global_assignment -name VERILOG_FILE sccpu/cla32.v
 set_global_assignment -name VERILOG_FILE sccpu/alu.v
 set_global_assignment -name VERILOG_FILE sccpu/addsub32.v
-set_global_assignment -name VERILOG_FILE sccpu/aaa_bb.v
 set_global_assignment -name CDF_FILE ../CPU1/cpu_project_1/Chain1.cdf
 set_global_assignment -name CDF_FILE output_files/Chain2.cdf
-set_global_assignment -name VERILOG_FILE output_files/hex7.v
+set_global_assignment -name VERILOG_FILE sccpu/hex7.v
 set_global_assignment -name CDF_FILE output_files/Chain4.cdf
 set_global_assignment -name CDF_FILE output_files/Chain10.cdf
 set_global_assignment -name CDF_FILE output_files/Chain11.cdf

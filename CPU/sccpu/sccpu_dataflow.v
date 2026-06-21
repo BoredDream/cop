@@ -4,7 +4,7 @@ input         clock, resetn;
 output   [31:0]  pc, alu, data;
 output wmem;
 
-wire  [31:0] p4 , bpc, npc, adr, ra, alua, alub, res, alu_mem;
+wire  [31:0] p4 , npc, adr, ra, alua, alub, res, alu_mem;
 wire  [3:0] aluc;
 wire  [4:0] reg_dest, wn;
 wire  [1:0] pcsource;
