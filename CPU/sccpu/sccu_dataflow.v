@@ -64,7 +64,7 @@ module sccu_dataflow (op,op1,rd,func,z,ov,sta,intr,
 
 	assign aluc[3]=i_sra;
 	assign aluc[2]=i_sub|i_or|i_srl|i_sra|i_ori|i_lui;
-	assign aluc[1]=i_xor|i_sll|i_sra|i_xori|i_beq|i_bne|i_lui;
+	assign aluc[1]=i_xor|i_sll|i_srl|i_sra|i_xori|i_beq|i_bne|i_lui;
 	assign aluc[0]=i_and|i_or|i_sll|i_srl|i_sra|i_andi|i_ori;
 
 	assign wmem = i_sw;
