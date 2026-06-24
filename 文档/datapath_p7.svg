@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" font-family="'Source Han Sans SC','Noto Sans CJK SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#1f3b52"/>
+    </marker>
+    <marker id="carrow" markerWidth="10" markerHeight="8" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#c0561f"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1280" height="720" fill="#ffffff"/>
+  <text x="640" y="42" text-anchor="middle" font-size="26" font-weight="bold" fill="#16344a">单周期 MIPS 数据通路（sccpu_dataflow）</text>
+
+  <!-- 样式约定 -->
+  <!-- 部件 -->
+  <g fill="#eef4fb" stroke="#2f6da3" stroke-width="2">
+    <rect x="25"  y="150" width="235" height="70" rx="8"/>   <!-- 下一PC逻辑 -->
+    <rect x="25"  y="345" width="70"  height="80" rx="8"/>   <!-- PC -->
+    <rect x="150" y="340" width="120" height="90" rx="8"/>   <!-- IM -->
+    <rect x="420" y="325" width="150" height="140" rx="8"/>  <!-- RegFile -->
+    <rect x="420" y="505" width="140" height="46" rx="8"/>   <!-- sext -->
+    <rect x="880" y="350" width="130" height="95" rx="8"/>   <!-- DM -->
+    <rect x="600" y="120" width="210" height="58" rx="8"/>   <!-- 控制单元 -->
+  </g>
+
+  <!-- 文字标注 -->
+  <g fill="#16344a" text-anchor="middle">
+    <text x="142" y="180" font-size="15" font-weight="bold">下一 PC 逻辑</text>
+    <text x="142" y="202" font-size="12">PC+4·分支·jr·j/jal → pcsource</text>
+
+    <text x="60"  y="382" font-size="15" font-weight="bold">PC</text>
+    <text x="60"  y="402" font-size="12">dff32</text>
+
+    <text x="210" y="382" font-size="14" font-weight="bold">指令存储器</text>
+    <text x="210" y="402" font-size="13">scinstmem</text>
+
+    <text x="495" y="360" font-size="15" font-weight="bold">寄存器堆 regfile</text>
+    <text x="495" y="383" font-size="13">2 读 · 1 写 · r0=0</text>
+    <text x="495" y="403" font-size="12" fill="#5a6b78">目标: regrt 选 rd/rt; jal→r31</text>
+
+    <text x="490" y="533" font-size="14" font-weight="bold">符号扩展 sext</text>
+
+    <text x="945" y="388" font-size="14" font-weight="bold">数据存储器</text>
+    <text x="945" y="408" font-size="13">scdatamem</text>
+
+    <text x="705" y="146" font-size="15" font-weight="bold">控制单元 sccu</text>
+    <text x="705" y="167" font-size="13">op/func → 控制信号</text>
+
+    <text x="1100" y="344" font-size="12" font-weight="bold">写回 mux</text>
+  </g>
+
+  <!-- ALU 主体（凸多边形）-->
+  <polygon points="700,335 762,335 815,388 762,440 700,440 720,388" fill="#2f6da3" stroke="#1f3b52" stroke-width="2"/>
+  <text x="748" y="382" text-anchor="middle" font-size="16" font-weight="bold" fill="#ffffff">ALU</text>
+  <text x="748" y="401" text-anchor="middle" font-size="11" fill="#eaf3ea">aluc·z·v</text>
+
+  <!-- alub 多路选择器 -->
+  <polygon points="620,372 660,388 660,442 620,458" fill="#dceaf6" stroke="#2f6da3" stroke-width="2"/>
+  <text x="639" y="420" font-size="11" fill="#16344a" text-anchor="middle">alub</text>
+
+  <!-- 写回 mux -->
+  <polygon points="1078,355 1118,371 1118,419 1078,435" fill="#dceaf6" stroke="#2f6da3" stroke-width="2"/>
+  <text x="1098" y="399" font-size="10" fill="#16344a" text-anchor="middle">m2reg</text>
+
+  <!-- ===== 数据通路（实线箭头） ===== -->
+  <g stroke="#1f3b52" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <path d="M60,220 L60,345"/>                         <!-- 下一PC -> PC -->
+    <path d="M95,385 L150,385"/>                         <!-- PC -> IM -->
+    <path d="M270,385 L420,385"/>                        <!-- IM -> RegFile(指令) -->
+    <path d="M310,385 L310,475 L420,475"/>               <!-- imm -> sext -->
+    <path d="M570,360 L700,360"/>                         <!-- RegFile busA -> ALU A -->
+    <path d="M570,402 L620,394"/>                         <!-- RegFile busB -> alub -->
+    <path d="M560,528 L600,528 L600,450 L620,450"/>       <!-- sext -> alub -->
+    <path d="M660,415 L700,412"/>                         <!-- alub -> ALU B -->
+    <path d="M815,388 L880,388"/>                         <!-- ALU -> DM -->
+    <path d="M1010,392 L1078,392"/>                       <!-- DM out -> 写回mux -->
+    <path d="M845,388 L845,300 L1098,300 L1098,355"/>     <!-- ALU结果 -> 写回mux -->
+    <path d="M1118,395 L1160,395 L1160,625 L495,625 L495,465"/> <!-- 写回 -> RegFile写口 -->
+    <path d="M125,385 L125,222"/>                         <!-- PC值 -> 下一PC逻辑 -->
+  </g>
+
+  <!-- 数据线标注 -->
+  <g fill="#5a6b78" font-size="12" text-anchor="middle">
+    <text x="345" y="375">指令 rs/rt/rd/imm</text>
+    <text x="280" y="468">imm</text>
+    <text x="635" y="352">busA</text>
+    <text x="800" y="290" text-anchor="start">ALU 结果</text>
+    <text x="800" y="640" text-anchor="middle">写回数据（ALU 结果 / 访存数据，由 m2reg 选）</text>
+  </g>
+
+  <!-- ===== 控制信号（橙色虚线） ===== -->
+  <g stroke="#c0561f" stroke-width="1.6" fill="none" stroke-dasharray="6 4" marker-end="url(#carrow)">
+    <path d="M662,178 L520,325"/>          <!-- wreg -> RegFile -->
+    <path d="M700,178 L745,335"/>          <!-- aluc -> ALU -->
+    <path d="M780,178 L945,350"/>          <!-- wmem -> DM -->
+    <path d="M620,170 L260,185"/>          <!-- pcsource -> 下一PC -->
+  </g>
+  <g fill="#c0561f" font-size="11" text-anchor="middle">
+    <text x="560" y="250">wreg</text>
+    <text x="735" y="250">aluc</text>
+    <text x="880" y="250">wmem</text>
+    <text x="430" y="160">pcsource</text>
+  </g>
+
+  <!-- 图例 -->
+  <g font-size="12" fill="#16344a">
+    <line x1="1000" y1="668" x2="1035" y2="668" stroke="#1f3b52" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="1042" y="672" text-anchor="start">数据通路</text>
+    <line x1="1130" y1="668" x2="1165" y2="668" stroke="#c0561f" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#carrow)"/>
+    <text x="1172" y="672" text-anchor="start">控制信号</text>
+  </g>
+  <text x="25" y="700" font-size="12" fill="#5a6b78">* CP0 / 异常·中断通路（Status/Cause/EPC、selpc、fromc0）见第 12 页</text>
+</svg>
